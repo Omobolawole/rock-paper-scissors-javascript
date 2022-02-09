@@ -1,7 +1,9 @@
+//Declare variables for the moves and initial players' scores
 const moves = ['rock', 'paper', 'scissors'];
 let playerScore = 0;
 let computerScore = 0;
 
+//Declare a function to get the number of rounds the player wants
 function getRounds() {
     while (true) {
         rounds = Number(prompt('How many rounds?', ' '));
@@ -11,6 +13,7 @@ function getRounds() {
     } 
 }
 
+//Declare a function to get the player's move at each round
 function playerPlay() {
     while (true) {
         move = (prompt('Rock, Paper, Scissors?', ' ')).toLowerCase();
@@ -20,11 +23,13 @@ function playerPlay() {
     }  
 }
 
+//Declare a function to get the computer's move at each round
 function computerPlay() {
     randomMove = moves[Math.floor(Math.random()*moves.length)];
     return randomMove;
 }
 
+//Declare a function to determine what move beats what
 function beats(moveOne, moveTwo) {
     if ((moveOne === 'rock' && moveTwo === 'scissors') || 
         (moveOne === 'scissors' && moveTwo === 'paper') ||
@@ -39,11 +44,13 @@ function beats(moveOne, moveTwo) {
     }
 }
 
+//Declare a function to display the players' scores
 function displayScores(pScore, cScore) {
     console.log(`Your score: ${pScore}`);
     console.log(`Computer's score: ${cScore}`);
 }
 
+//Declare a function to play one round of the game
 function playRound(playerSelection, computerSelection) {
     console.log(`You played ${playerSelection}`);
     console.log(`Computer played ${computerSelection}`);
@@ -78,6 +85,8 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+//Declare a function to play the entire game, depending on number of rounds entered 
+//THis function also displays the final scores and whether the player wins, loses or ties the game
 function playGame() {
     let gameRounds = getRounds();
     
@@ -99,4 +108,5 @@ function playGame() {
     }
 }
 
+//Call the playGame() function to start playing the game
 playGame();
