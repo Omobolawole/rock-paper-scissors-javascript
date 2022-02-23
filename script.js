@@ -1,23 +1,24 @@
 let playerScore = 0;
 let computerScore = 0;
-let playedRounds = 0;
+let playedRounds = 1;
 const moves = ['rock', 'paper', 'scissors'];
 
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
-const results = document.querySelector('#display-results p');
+const results = document.querySelectorAll('#display-results p');
 const whatRound = document.querySelector('.what-round');
 const playerMove = document.querySelector('.player-move');
 const computerMove = document.querySelector('.computer-move');
-const scores = document.querySelector('.scores');
 const roundResult = document.querySelector('.round-result');
+const scores = document.querySelector('.scores');
 const finalScores = document.querySelector('.final-scores');
 const gameResult = document.querySelector('.game-result');
 
 function getRounds() {
     rounds = document.querySelector('#input-rounds');
-    return Number(rounds.value);
+    let roundsValue = Number(rounds.value);
+    return roundsValue;
 }
 
 function computerPlay() {
@@ -67,7 +68,7 @@ function setGameOver() {
 }
 
 function resetGame() {
-    playedRounds = 0;
+    playedRounds = 1;
     for(let result of results) {
         result.textContent = '';
     }
@@ -81,14 +82,24 @@ function resetGame() {
     rounds.focus();
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(event) {
+    event.preventDefault();
 
-    playerMove.textContent = `You played ${playerSelection}`;
-    computerMove.textContent = `Computer played ${computerSelection}`;
+    let gameRounds = getRounds();
+    if (gameRounds > 5 || gameRounds < 1) {
+        alert('Please enter a valid number from 1 to 5');
+        return;
+    }
+    whatRound.textContent = `--Round ${playedRounds} of ${gameRounds}--`;
+    
+    let target = event.target;
+    let playerSelection = target.id;
+    let computerSelection = computerPlay();    
+
+    playerMove.textContent = `You played: ${playerSelection}`;
+    computerMove.textContent = `Computer played: ${computerSelection}`;
 
     if (beats(playerSelection, computerSelection) === 'Player wins') {
-        playerScore += 1;
-        displayScores(playerScore, computerScore);
         if (playerSelection === 'rock' && computerSelection === 'scissors') {
             roundResult.textContent = 'You win! Rock beats Scissors';
         } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
@@ -96,11 +107,11 @@ function playRound(playerSelection, computerSelection) {
         } else if (playerSelection === 'paper' && computerSelection === 'rock') {
             roundResult.textContent = 'You win! Paper beats Rock';
         }
+        playerScore += 1;
+        displayScores(playerScore, computerScore);
     }
     
     if (beats(playerSelection, computerSelection) === 'Computer wins') {
-        computerScore += 1;
-        displayScores(playerScore, computerScore);
         if (playerSelection === 'scissors' && computerSelection === 'rock') {
             roundResult.textContent = 'You lose! Rock beats Scissors';
         } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
@@ -108,34 +119,23 @@ function playRound(playerSelection, computerSelection) {
         } else if (playerSelection === 'rock' && computerSelection === 'paper') {
             roundResult.textContent = 'You lose! Paper beats Rock';
         }
+        computerScore += 1;
+        displayScores(playerScore, computerScore);
     }
     
     if (beats(playerSelection, computerSelection) === 'Both tie') { 
             displayScores(playerScore, computerScore);     
             roundResult.textContent = 'It\'s a tie!';
     }
+
     playedRounds += 1;
-}
-
-function playGame(event) {
-    event.preventDefault();
-    let gameRounds = getRounds();
-
-    for(let i = 1; i <= gameRounds; i++) {
-        whatRound.textContent = `--Round ${i}--${gameRounds}`;
-
-        let target = event.target;
-        let playerSelection = target.id;
-        let computerSelection = computerPlay();
-        if (playedRounds > gameRounds) {
-            setGameOver();
-        }      
-        playRound(playerSelection, computerSelection);
+    if (playedRounds > gameRounds) {
+        displayFinalScores();
+        setGameOver();
     }
-    displayFinalScores();
 }
 
 const buttons = document.querySelectorAll('.buttons');
 buttons.forEach(function(button) {
-    button.addEventListener('click', playGame);
+    button.addEventListener('click', playRound);
 });
