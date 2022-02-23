@@ -69,6 +69,8 @@ function setGameOver() {
 }
 
 function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
     playedRounds = 1;
     for(let result of results) {
         result.textContent = '';
