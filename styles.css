@@ -1,0 +1,66 @@
+body {
+    text-align: center;
+    background-color: rgb(252, 249, 245);
+}
+
+h1 {
+    font: bold 30pt Georgia;
+    color: #FC4445;
+}
+
+h2 {
+    font: bold 30pt Georgia;
+    color: #1F2833;
+}
+
+input[type=number] {
+    width: 2em;
+    height: 2em;
+    border: 3px solid #1F2833;
+    border-radius: 25%;
+    font: bold 2em Georgia;
+    background-color: #C5C6C7;
+    color: #1F2833;
+}
+
+input[type=button] {
+    width: 150px;
+    height: 150px;
+    font: bold 30px Georgia;
+    background-color: #FC4445;
+    color: #1F2833;
+    border: 3px solid #1F2833;
+    border-radius: 25%;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.what-round,
+.final-scores {
+    font: bold 1.5em Georgia;
+    color: #FC4445;
+}
+
+.player-move,
+.computer-move,
+.round-result {
+    font: bold 1em Georgia;
+    color: #1F2833;
+}
+
+.scores,
+.game-result {
+    width: auto;
+    font: bold 1.5em Georgia;
+    color: #1F2833; 
+}
+
+.reset {
+    width: 200px;
+    height: 50px;
+    font: bold 20px Georgia;
+    background-color: #FC4445;
+    color: #1F2833;
+    border: 3px solid #1F2833;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}

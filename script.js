@@ -62,6 +62,7 @@ function setGameOver() {
     scissors.disabled = true;
     rounds.disabled = true;
     resetButton = document.createElement('button');
+    resetButton.classList.add('reset');
     resetButton.textContent = 'Play Again';
     document.body.appendChild(resetButton);
     resetButton.addEventListener('click', resetGame);
@@ -87,7 +88,7 @@ function playRound(event) {
 
     let gameRounds = getRounds();
     if (gameRounds > 5 || gameRounds < 1) {
-        alert('Please enter a valid number from 1 to 5');
+        alert('Please enter a valid number of rounds from 1 to 5');
         return;
     }
     whatRound.textContent = `--Round ${playedRounds} of ${gameRounds}--`;
