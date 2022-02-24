@@ -10,32 +10,40 @@
 <body>
     <h1>ROCK PAPER SCISSORS</h1>
 
-    <h2>Rounds:</h2>
-    <form id="rounds-getter">
-        <label for="input-rounds"></label>
-        <input type="number" id="input-rounds" name="rounds" min="1" max="5">
-    </form>
-    
-    <h2>Moves:</h2>
-    <form id="move-getter">
-        <label for="input-move"></label>
-        <input type="button" id="rock" class="buttons" name="rock" value="Rock">
-        <input type="button" id="paper" class="buttons" name="paper" value="Paper">
-        <input type="button" id="scissors" class="buttons" name="scissors" value="Scissors">
-    </form>
-
-    <h2>Results:</h2>
-    <div id="display-results">
-        <p class="what-round"></p>
-        <p class="player-move"></p>
-        <p class="computer-move"></p>
-        <p class="round-result"></p>
-        <p class="scores"></p>
-        <p class="final-scores"></p>
-        <p class="scores"></p>
-        <p class="game-result"></p>
+    <div class="game">
+        <div class="rounds">
+            <h2>Rounds:</h2>
+            <form id="rounds-getter">
+                <label for="input-rounds"></label>
+                <input type="number" id="input-rounds" name="rounds" min="1" max="5">
+            </form>
+        </div>
+        
+        <div class="moves">
+            <h2>Moves:</h2>
+            <form id="move-getter">
+                <label for="input-move"></label>
+                <input type="button" id="rock" class="buttons" name="rock" value="Rock">
+                <input type="button" id="paper" class="buttons" name="paper" value="Paper">
+                <input type="button" id="scissors" class="buttons" name="scissors" value="Scissors">
+            </form> 
+        </div>
+        
+        <div class="results">
+            <h2>Results:</h2>
+            <div id="display-results">
+                <p class="what-round"></p>
+                <p class="player-move"></p>
+                <p class="computer-move"></p>
+                <p class="round-result"></p>
+                <p class="scores"></p>
+                <p class="final-scores"></p>
+                <p class="scores"></p>
+                <p class="game-result"></p>
+            </div>
+        </div>
     </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
