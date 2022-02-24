@@ -5,11 +5,11 @@ body {
 }
 
 .game {
-    padding: 0px 150px 0px 150px;
+    padding: 0px 150px 0px 300px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 5px;
 }
 
 .rounds {
@@ -85,7 +85,7 @@ input[type=button] {
 }
 
 .reset {
-    margin: 0px 75px;
+    margin: 0px 150px;
     width: 200px;
     height: 50px;
     font: bold 20px Georgia;
